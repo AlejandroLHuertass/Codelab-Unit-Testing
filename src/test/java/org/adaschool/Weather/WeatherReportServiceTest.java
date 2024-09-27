@@ -44,13 +44,11 @@ class WeatherReportServiceTest {
 
         String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=b521df53cc3de83b65f478a4238cc7ee";
 
-        // Stubbing the RestTemplate
         when(restTemplate.getForObject(url, WeatherApiResponse.class)).thenReturn(respuesta);
 
-        // Act
+
         WeatherReport report = weatherReportService.getWeatherReport(latitude, longitude);
 
-        // Assert
         assertEquals(0, report.getTemperature());
         assertEquals(91, report.getHumidity());
     }
